@@ -24,7 +24,7 @@ t_position getBaseStationPosition(t_map);
  * @param map : the map
  * @return none
  */
-void calculateCosts(t_map);
+
 
 /**
  * @brief : function to remove 'false' crevasses costs from the costs array

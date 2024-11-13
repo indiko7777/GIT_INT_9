@@ -18,6 +18,7 @@ typedef enum e_soil
     CREVASSE
 } t_soil;
 
+
 /**
  * @brief Array of costs for the soils
  */
@@ -34,7 +35,7 @@ typedef struct s_map
     int     x_max;
     int     y_max;
 } t_map;
-
+void calculateCosts(t_map);
 /**
  * @brief Function to initialise the map from a file
  * @param filename : the name of the file
