@@ -1,7 +1,3 @@
-//
-// Created by flasque on 19/10/2024.
-//
-
 #ifndef UNTITLED1_LOC_H
 #define UNTITLED1_LOC_H
 
@@ -79,5 +75,13 @@ t_position UP(t_position);
  * @return the DOWN position
  */
 t_position DOWN(t_position);
+
+/**
+ * @brief Function to choose the initial position of the robot
+ * @param map_x_max : maximum x value of the map
+ * @param map_y_max : maximum y value of the map
+ * @return the initial localisation
+ */
+t_localisation chooseInitialPosition(int map_x_max, int map_y_max);
 
 #endif //UNTITLED1_LOC_H
