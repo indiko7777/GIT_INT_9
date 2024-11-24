@@ -7,13 +7,13 @@
 #include "simulate.h"
 
 int main() {
-    // Seed the random number generator
+    
     srand(time(NULL));
 
-    // Example map setup using the existing map functionality
+   
     t_map map;
 
-    // Initialize the map using map.c logic
+    
 #if defined(_WIN32) || defined(_WIN64)
     map = createMapFromFile("..\\maps\\example1.map");
 #else
