@@ -7,7 +7,7 @@
 #include "loc.h"
 #include "map.h"
 
-// Function to apply a move and get the new localisation
+
 void applyMove(t_localisation *loc, t_move move, t_localisation *new_loc) {
     // Update orientation
     switch (move) {
@@ -45,7 +45,7 @@ void applyMove(t_localisation *loc, t_move move, t_localisation *new_loc) {
     new_loc->pos.y = loc->pos.y + dy * distance;
 }
 
-// Function to simulate MARC's journey
+
 void simulateMARC(t_map *map, t_localisation start_loc, t_move *random_moves, int num_moves) {
     // Find base camp position (cell with cost 0)
     int base_camp_x = -1, base_camp_y = -1;
@@ -78,20 +78,19 @@ void simulateMARC(t_map *map, t_localisation start_loc, t_move *random_moves, in
         }
 
         while (1) {
-            // Build the sequence of moves
             t_move sequence[5];
-            int used_moves[9] = {0}; // To ensure each move is used at most once
+            int used_moves[9] = {0}; 
             int valid_sequence = 1;
             for (int i = 0; i < seq_len; i++) {
                 sequence[i] = random_moves[indices[i]];
                 used_moves[indices[i]]++;
                 if (used_moves[indices[i]] > 1) {
                     valid_sequence = 0;
-                    break; // Move used more than once, invalid sequence
+                    break; 
                 }
             }
             if (!valid_sequence) {
-                goto next_combination; // Skip to the next combination
+                goto next_combination; 
             }
 
             int total_cost = 0;
@@ -109,7 +108,7 @@ void simulateMARC(t_map *map, t_localisation start_loc, t_move *random_moves, in
                     break;
                 }
                 int cost = map->costs[y][x];
-                if (cost >= 10000 || cost == COST_UNDEF) { // Obstacle or undefined cost
+                if (cost >= 10000 || cost == COST_UNDEF) { 
                     valid = 0;
                     break;
                 }
@@ -139,7 +138,6 @@ void simulateMARC(t_map *map, t_localisation start_loc, t_move *random_moves, in
             }
 
             next_combination:
-            // Generate next combination
             int i = seq_len - 1;
             while (i >= 0 && indices[i] == num_moves - seq_len + i) {
                 i--;
@@ -161,8 +159,7 @@ void simulateMARC(t_map *map, t_localisation start_loc, t_move *random_moves, in
         } else {
             printf("Could not reach the base camp. Closest distance: %d\n", min_distance);
         }
-
-        // Use the stack to display moves in correct order
+        
         t_stack move_stack = createStack(best_sequence_length);
         for (int i = 0; i < best_sequence_length; i++) {
             push(&move_stack, best_sequence[i]);
